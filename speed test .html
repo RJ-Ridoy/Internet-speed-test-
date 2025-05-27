@@ -1,0 +1,70 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html>
+<head>
+  <title>Internet Speed Test - RS</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+      background-color: white;
+      color: black;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .logo {
+      font-size: 40px;
+      font-weight: bold;
+      color: orange;
+    }
+    #speed {
+      font-size: 28px;
+      margin: 30px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    #darkModeToggle {
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">RS</div>
+  <h1>Internet Speed Test</h1>
+  <div id="speed">0 Mbps</div>
+  <button onclick="startTest()">Start</button>
+  <br/>
+  <label>
+    <input type="checkbox" id="darkModeToggle" /> Dark Mode
+  </label>
+
+  <script>
+    function startTest() {
+      let speed = 0;
+      let target = Math.random() * 100 + 50; // 50 থেকে 150 Mbps
+      let interval = setInterval(() => {
+        speed += 5;
+        if (speed >= target) {
+          speed = target.toFixed(2);
+          clearInterval(interval);
+        }
+        document.getElementById('speed').innerText = speed + ' Mbps';
+      }, 100);
+    }
+
+    const darkToggle = document.getElementById('darkModeToggle');
+    darkToggle.addEventListener('change', function() {
+      if (this.checked) {
+        document.body.style.backgroundColor = '#121212';
+        document.body.style.color = '#eee';
+      } else {
+        document.body.style.backgroundColor = 'white';
+        document.body.style.color = 'black';
+      }
+    });
+  </script>
+</body>
+</html>
